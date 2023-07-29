@@ -10,24 +10,38 @@
                 <form action="#" id="form" class="form-horizontal">
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
-                        <label for="nama">Nama:</label>
-                        <input type="text" class="form-control" id="nama" name="nama">
+                        <label class="control-label col-md-3">Nama:</label>
+                        <div class="col-md-9">
+                            <input name="nama" placeholder="" class="form-control" type="text" id="nama">
+                            <span class="help-block"></span>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="jabatan">Jabatan:</label>
-                        <input type="text" class="form-control" id="jabatan" name="jabatan">
+                        <label class="control-label col-md-3">Jabatan:</label>
+                        <div class="col-md-9">
+                            <input name="jabatan" placeholder="" class="form-control" type="text" id="jabatan">
+                            <span class="help-block"></span>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="jenis_kelamin">Jenis Kelamin:</label>
-                        <select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
+                        <label class="control-label col-md-3">Jenis Kelamin:</label>
+                        <div class="col-md-9">
+                            <select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
+                            <option value="">Pilih</option>
                             <option value="perempuan">Perempuan</option>
                             <option value="laki-laki">Laki-laki</option>
                         </select>
+                            <span class="help-block"></span>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="alamat">Alamat:</label>
-                        <textarea class="form-control" id="alamat" name="alamat"></textarea>
+                        <label class="control-label col-md-3">Alamat:</label>
+                        <div class="col-md-9">
+                            <textarea class="form-control" id="alamat" name="alamat"></textarea>
+                            <span class="help-block"></span>
+                        </div>
                     </div>
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -61,7 +75,7 @@
                     </div>
                 </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="btnSaveImport" onclick="importData()">Save</button>
+                <button type="button" class="btn btn-success" id="btnSaveImport" onclick="importData()">Import</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

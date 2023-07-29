@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="app-url" content="<?php echo base_url('/') ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css1/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo base_url() ?>/assets/css/bootstrap.min.css">
         <link href="<?php echo base_url() ?>/assets/datatables/css/dataTables.bootstrap.css" rel="stylesheet">
     </head>
     <body>
@@ -36,7 +36,7 @@
             <?php $this->load->view("candidate/_partials/modal.php") ?>
 
             <script src="<?php echo base_url() ?>/assets/jquery/jquery.js"></script>
-            <script src="<?php echo base_url() ?>/assets/js1/bootstrap.min.js"></script>
+            <script src="<?php echo base_url() ?>/assets/js/bootstrap.min.js"></script>
             <script src="<?php echo base_url() ?>/assets/datatables/js/jquery.dataTables.min.js"></script>
             <script src="<?php echo base_url() ?>/assets/datatables/js/dataTables.bootstrap.js"></script>
             <script type="text/javascript">
@@ -101,8 +101,10 @@
                 save_method = 'add';
                 $('input').val('');
                 $('select').val('');
+                $('textarea').val('');
                 $('.form-group').removeClass('has-error'); 
                 $('.help-block').empty(); 
+                $('.modal-title').text('Add'); 
                 $('#itemModal').modal('show');
                 $('.modal-title').text('Tambah Candidate'); 
             }
@@ -112,6 +114,7 @@
                 $('input').val('');
                 $('#importModal').find('.close').show();
                 $('#importModal').find('.btn-default').show();
+                $('#importModal .modal-title').text('Import Data'); 
                 $('#importModal').modal('show'); // show bootstrap modal
             }
 
@@ -119,7 +122,7 @@
             {
                 save_method = 'update';
                 $('.form-group').removeClass('has-error'); 
-                $('.help-block').empty(); 
+                $('.help-block').empty();  
 
                 //Ajax Load data from ajax
                 $.ajax({
@@ -225,8 +228,9 @@
 
             function importData()
             {
-                $('#btnSaveImport').text('saving...'); //change button text
+                $('#btnSaveImport').text('importing...'); //change button text
                 $('#btnSaveImport').attr('disabled',true); //set button disable
+                $('#importModal .modal-title').text('Import Data'); 
                 var url = "index.php/candidate/import_data";
                 console.log($('#url').val());
                 if($('#url').val() == ''){
@@ -236,6 +240,7 @@
                 $.ajax({
                     url : url,
                     type: "POST",
+                    data: $('#importModal #form').serialize(),
                     dataType: "JSON",
                     success: function(data)
                     {
@@ -245,9 +250,9 @@
                             reloadTable();
                         }else{
                             alert('Import data gagal.');
-                            $('#btnSaveImport').text('Save');
-                            $('#btnSaveImport').attr('disabled',false); //set button disable
                         }
+                        $('#btnSaveImport').text('Import');
+                        $('#btnSaveImport').attr('disabled',false);
                         
                     },
                     error: function (jqXHR, textStatus, errorThrown)
